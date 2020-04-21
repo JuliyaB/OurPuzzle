@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _14App_puzzle
+namespace WpfPuzzle
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
