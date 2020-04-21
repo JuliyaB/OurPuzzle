@@ -160,7 +160,31 @@ namespace WpfPuzzle
                 MessageBox.Show("Поздравляю. Вы собрали пазл!");
             }
         }
+            private Canvas GetAssociatedCanvasByIndex(int index)
+        {
+            int i = index;
 
+            if (i == 0)
+                return puzzlePart1;
+            else if (i == 1)
+                return puzzlePart2;
+            else if (i == 2)
+                return puzzlePart3;
+            else if (i == 3)
+                return puzzlePart4;
+            else if (i == 4)
+                return puzzlePart5;
+            else if (i == 5)
+                return puzzlePart6;
+            else if (i == 6)
+                return puzzlePart7;
+            else if (i == 7)
+                return puzzlePart8;
+            else if (i == 8)
+                return puzzlePart9;
+
+            return null;
+        }
         }
     }
 }
