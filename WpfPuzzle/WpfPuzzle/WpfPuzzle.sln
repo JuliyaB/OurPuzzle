@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPuzzle", "WpfPuzzle\WpfPuzzle.csproj", "{2FBA25E4-B421-4BE8-8D4F-6759B6B46B4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPuzzle", "WpfPuzzle\WpfPuzzle.csproj", "{D7BCC398-B2B6-4123-8052-D7FD81118CE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2FBA25E4-B421-4BE8-8D4F-6759B6B46B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2FBA25E4-B421-4BE8-8D4F-6759B6B46B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2FBA25E4-B421-4BE8-8D4F-6759B6B46B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2FBA25E4-B421-4BE8-8D4F-6759B6B46B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BCC398-B2B6-4123-8052-D7FD81118CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BCC398-B2B6-4123-8052-D7FD81118CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BCC398-B2B6-4123-8052-D7FD81118CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BCC398-B2B6-4123-8052-D7FD81118CE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8013A1D7-45D4-4A92-BF19-3954E55DAB67}
+		SolutionGuid = {F9990874-0FFA-46C2-9ACF-53A66A4F5723}
 	EndGlobalSection
 EndGlobal
