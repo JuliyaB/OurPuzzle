@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace _14App_puzzle
+namespace WpfPuzzle
 {
     class Puzzle
     {
