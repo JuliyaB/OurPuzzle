@@ -48,6 +48,20 @@ namespace WpfPuzzle
                 puzzleItemList.ItemsSource = puzzle.puzzlePiece;
                 puzzle.Edited += new EventHandler(puzzle_Edited);
             }
+
+            private void puzzleItemList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ListBox parent = sender as ListBox;
+            lbDragSource = parent;
+            object data = GetObjectDataFromPoint(lbDragSource, e.GetPosition(parent));
+
+            if (data != null)
+            {
+                PuzzlePiece itemSelected = data as PuzzlePiece;
+                itemSelected.DragFrom = typeof(ListBox);
+                DragDrop.DoDragDrop(lbDragSource, data, DragDropEffects.Move);
+            }
+        }
         }
     }
 }
