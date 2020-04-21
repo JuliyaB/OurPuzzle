@@ -62,6 +62,19 @@ namespace WpfPuzzle
                 DragDrop.DoDragDrop(lbDragSource, data, DragDropEffects.Move);
             }
         }
+            private void PzItmCvs_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Canvas parent = sender as Canvas;
+            cvDragSource = parent;
+            object data = GetDataFromCanvas(cvDragSource);
+
+            if (data != null)
+            {
+                PuzzlePiece itemSelected = data as PuzzlePiece;
+                itemSelected.DragFrom = typeof(Canvas);
+                DragDrop.DoDragDrop(cvDragSource, data, DragDropEffects.Move);
+            }
+        }
         }
     }
 }
