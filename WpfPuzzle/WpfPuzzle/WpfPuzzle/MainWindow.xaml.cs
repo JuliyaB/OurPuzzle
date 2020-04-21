@@ -1,5 +1,7 @@
-﻿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,43 +15,44 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfPuzzle
+namespace _14App_puzzle
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        Puzzle puzzle = new Puzzle();
+
+        ObservableCollection<PuzzlePiece> itemPlacement = new ObservableCollection<PuzzlePiece>();
+
+        PuzzlePiece emptyItem = new PuzzlePiece();
+
+        ListBox lbDragSource;
+
+        Canvas cvDragSource;
+
         public MainWindow()
         {
-            Puzzle puzzle = new Puzzle();
-            
-            ObservableCollection<PuzzlePiece> itemPlacement = new ObservableCollection<PuzzlePiece>();
-            
-            PuzzlePiece emptyItem = new PuzzlePiece();
-            
-            ListBox lbDragSource;
-            
-            Canvas cvDragSource;
-            public MainWindow()
-            {
-                InitializeComponent();
-                
-                puzzle.Initialize(1);
-                emptyItem.index = -1;
-                emptyItem.PuzzleImageSource = new BitmapImage();
-                emptyItem.UriString = "";
-                for (int i = 0; i < 9; i++)
-                {
-                    itemPlacement.Add(emptyItem);
-                    
-                    itemPlacement[i].index = i;
-                }
-                puzzleItemList.ItemsSource = puzzle.puzzlePiece;
-                puzzle.Edited += new EventHandler(puzzle_Edited);
-            }
+            InitializeComponent();
 
-            private void puzzleItemList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+            puzzle.Initialize(1);
+            emptyItem.index = -1;
+            emptyItem.PuzzleImageSource = new BitmapImage();
+            emptyItem.UriString = "";
+
+            for (int i = 0; i < 9; i++)
+            {
+                itemPlacement.Add(emptyItem);
+
+                itemPlacement[i].index = i;
+            }
+            puzzleItemList.ItemsSource = puzzle.puzzlePiece;
+            puzzle.Edited += new EventHandler(puzzle_Edited);
+        }
+
+
+        private void puzzleItemList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListBox parent = sender as ListBox;
             lbDragSource = parent;
@@ -62,7 +65,8 @@ namespace WpfPuzzle
                 DragDrop.DoDragDrop(lbDragSource, data, DragDropEffects.Move);
             }
         }
-            private void PzItmCvs_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+        private void PzItmCvs_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Canvas parent = sender as Canvas;
             cvDragSource = parent;
@@ -75,7 +79,10 @@ namespace WpfPuzzle
                 DragDrop.DoDragDrop(cvDragSource, data, DragDropEffects.Move);
             }
         }
-            private void PuzzleItemDrop(object sender, DragEventArgs e)
+
+
+
+        private void PuzzleItemDrop(object sender, DragEventArgs e)
         {
             Canvas destination = sender as Canvas;
             PuzzlePiece itemTransferred = null;
@@ -151,7 +158,8 @@ namespace WpfPuzzle
             puzzle.OnEdit(EventArgs.Empty);
             itemTransferred.DragFrom = null;
         }
-            void puzzle_Edited(object sender, EventArgs e)
+
+        void puzzle_Edited(object sender, EventArgs e)
         {
             bool validate = puzzle.Validate(itemPlacement);
 
@@ -160,7 +168,8 @@ namespace WpfPuzzle
                 MessageBox.Show("Поздравляю. Вы собрали пазл!");
             }
         }
-            private Canvas GetAssociatedCanvasByIndex(int index)
+
+        private Canvas GetAssociatedCanvasByIndex(int index)
         {
             int i = index;
 
@@ -185,7 +194,8 @@ namespace WpfPuzzle
 
             return null;
         }
-            private object GetDataFromCanvas(Canvas cvDragSource)
+
+        private object GetDataFromCanvas(Canvas cvDragSource)
         {
             int canvasIndex = int.Parse(cvDragSource.Tag.ToString());
 
@@ -193,7 +203,7 @@ namespace WpfPuzzle
 
             return item;
         }
-            private object GetObjectDataFromPoint(ListBox dragSource, Point point)
+        private object GetObjectDataFromPoint(ListBox dragSource, Point point)
         {
             UIElement element = dragSource.InputHitTest(point) as UIElement;
 
