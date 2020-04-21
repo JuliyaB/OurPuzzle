@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:WpfPuzzle"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate x:Key="listPuzzle">
+            <Grid>
+                <Image Source="{Binding PuzzleImageSource}" />
+            </Grid>
+        </DataTemplate>
+        <Style TargetType="ListBoxItem">
+
+        </Style>
     </Application.Resources>
 </Application>
