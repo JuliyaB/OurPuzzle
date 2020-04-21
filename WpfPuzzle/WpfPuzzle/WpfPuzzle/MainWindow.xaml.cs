@@ -185,6 +185,51 @@ namespace WpfPuzzle
 
             return null;
         }
+            private object GetDataFromCanvas(Canvas cvDragSource)
+        {
+            int canvasIndex = int.Parse(cvDragSource.Tag.ToString());
+
+            PuzzlePiece item = itemPlacement[canvasIndex];
+
+            return item;
+        }
+            private object GetObjectDataFromPoint(ListBox dragSource, Point point)
+        {
+            UIElement element = dragSource.InputHitTest(point) as UIElement;
+
+            //MessageBox.Show("Drag Source Element : " + element.ToString());
+
+            if (element != null)
+            {
+                object data = DependencyProperty.UnsetValue;
+
+                while (data == DependencyProperty.UnsetValue)
+                {
+                    data = dragSource.ItemContainerGenerator.ItemFromContainer(element);
+
+                    if (data == DependencyProperty.UnsetValue)
+                    {
+                        element = VisualTreeHelper.GetParent(element) as UIElement;
+
+                        //MessageBox.Show("Element passed through : " + element.ToString());
+                    }
+
+                    if (element == dragSource)
+                    {
+                        return null;
+
+                        //MessageBox.Show("element == dragSource");
+                    }
+                }
+
+                if (data != DependencyProperty.UnsetValue)
+                {
+                    //MessageBox.Show("Data : " + data.ToString());
+
+                    return data;
+                }
+            }
+            return null;
         }
     }
 }
