@@ -151,6 +151,15 @@ namespace WpfPuzzle
             puzzle.OnEdit(EventArgs.Empty);
             itemTransferred.DragFrom = null;
         }
+            void puzzle_Edited(object sender, EventArgs e)
+        {
+            bool validate = puzzle.Validate(itemPlacement);
+
+            if (validate)
+            {
+                MessageBox.Show("Поздравляю. Вы собрали пазл!");
+            }
+        }
 
         }
     }
