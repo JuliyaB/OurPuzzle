@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace _14App_puzzle
+namespace WpfPuzzle
 {
     class PuzzlePiece
     {
